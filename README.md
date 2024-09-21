@@ -14,10 +14,6 @@ Saves downloaded files in a designated folder.
 Usage
 Install Dependencies: Make sure you have pytube and pydub installed.
 
-bash
-
-Copy code
-
 pip install pytube pydub
 
 Set Up Your Playlist URL: Replace the playlist_url variable in the script with your desired YouTube playlist link.
