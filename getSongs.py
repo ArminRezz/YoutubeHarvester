@@ -1,8 +1,11 @@
+# UTILIZING PYTUBE AND PYDUB
 from pytube import Playlist, YouTube
 from pydub import AudioSegment
 import os
 import re
 
+
+### FUNCTIONS ###
 def get_video_links_from_playlist(playlist_url):
     """Extract video URLs from a YouTube playlist."""
     playlist = Playlist(playlist_url)
@@ -37,11 +40,12 @@ def sanitize_title(title):
     """Sanitize the title to create a valid filename."""
     return re.sub(r'[<>:"/\\|?*]', '', title)
 
+######################## Make Changes Here !!! ###########################
 # Replace with your playlist URL
-playlist_url = 'https://www.youtube.com/playlist?list=PLBSOUwqQZcrxJdRzTUXFtRFejpD6uujNg'
+playlist_url = 'https://www.youtube.com/playlist?list=PL3485902CC4FB6C67'
 video_urls = get_video_links_from_playlist(playlist_url)
 
 # Folder to save downloaded MP3 files
-download_folder = 'downloaded_mp3s'
+download_folder = 'mp3s'
 
 download_video_as_mp3(video_urls, download_folder)
