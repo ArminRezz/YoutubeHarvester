@@ -3,7 +3,9 @@ import shutil
 from pathlib import Path
 
 # Define the path to your Downloads folder
-downloads_folder = Path.home() / "Downloads"
+# for windows users, local folders in wsl are accessed through mnt/c/..
+# for mac users, no worries :)
+downloads_folder = Path("/mnt/c/Users/arnoj/Downloads") 
 
 # Define the target folders and their corresponding file extensions
 folders = {
@@ -14,7 +16,8 @@ folders = {
     "Archives": [".zip"],
     "Applications": [".app", ".pkg"],
     "Scripts": [".ml", ".java", ".c", ".cpp", ".py", ".rs", ".js", ".html", ".css", ".ts", ".Rmd"],
-    "Data": [".json", ".csv", ".xlsx"]
+    "Data": [".json", ".csv", ".xlsx"],
+    "Other": []  # Added "Other" folder for unmatched files
 }
 
 # Create target directories if they don't exist
@@ -37,9 +40,15 @@ def sort_files():
                         moved = True
                         break
                     except Exception as e:
-                        print(f"Error moving {item.name}: {e}")
+                        print(f"Error moving {item.name} to {folder}: {e}")
             if not moved:
-                print(f"No matching folder for: {item.name}")
+                # Move unmatched files to the "Other" folder
+                target_folder = downloads_folder / "Other"
+                try:
+                    shutil.move(str(item), str(target_folder / item.name))
+                    print(f"Moved: {item.name} to Other")
+                except Exception as e:
+                    print(f"Error moving {item.name} to Other: {e}")
 
 if __name__ == "__main__":
     sort_files()
