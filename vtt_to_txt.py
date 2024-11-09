@@ -38,6 +38,6 @@ def convert_vtt_to_essay(vtt_file_path, output_file_path):
         output_file.write('\n'.join(unique_lines))  # {{ edit_6 }}
 
 # Example usage
-vtt_file_path = '/home/arminrez/YoutubeMusicScript/test.vtt'  # Replace with your .vtt file path
-output_file_path = 'output_essay_unique.txt'  # Updated to reflect unique output
+vtt_file_path = '/home/arminrez/YoutubeMusicScript/subtitles.en.vtt'  # Replace with your .vtt file path
+output_file_path = 'subtitles1.txt'  # Updated to reflect unique output
 convert_vtt_to_essay(vtt_file_path, output_file_path)
